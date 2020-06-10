@@ -12,10 +12,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Installation Process
 
   Open the project folder `mall-management` and click on `src` and copy the `backend-mall-management` folder to your `htdocs` folder and also for the MYSQL queries inside th `src` floder there is a floder named `SQL file` import the sql file to your local myphpadmin page.
+  Make sure that your username and passord in set inside the `Connection.php`.
 
    Now open `mall-management` floder inside a terminal and type `npm install --save` 
    Once the installation is complete run `npm start`
 
+  For Admin user (username: `admin` & password:`admin`)
+
+  For manager accsess you can select any manager from the `Users` entity. 
+
+
+  
 
 
 
