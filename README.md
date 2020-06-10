@@ -1,4 +1,23 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Application Requirements
+
+ Latest version of Node and NPM should be installed in your system.
+ Download Link: https://nodejs.org/en/download/
+ 
+ Xampp installed with MYSQL and Apache server.
+ Download Link: https://www.apachefriends.org/download.html 
+ 
+  To check the version of node `node --version` or `node -v` and similar for npm `npm --version` or `npm -v` 
+
+## Installation Process
+
+  Open the project folder `mall-management` and click on `src` and copy the `backend-mall-management` folder to your `htdocs` folder and also for the MYSQL queries inside th `src` floder there is a floder named `SQL file` import the sql file to your local myphpadmin page.
+
+   Now open `mall-management` floder inside a terminal and type `npm install --save` 
+   Once the installation is complete run `npm start`
+
+
+
 
 ## Available Scripts
 
@@ -66,3 +85,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
