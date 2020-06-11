@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2020 at 07:14 PM
+-- Generation Time: Jun 11, 2020 at 07:45 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -39,7 +39,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`Cat_Id`, `User_Id`, `Category`, `Description`) VALUES
-(1, 1, 'Food', 'chips\nbiscuits');
+(1, 1, 'Food', 'chips\nbiscuits'),
+(3, 1, 'Electronics', 'All electrical items..');
 
 -- --------------------------------------------------------
 
@@ -87,28 +88,6 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`Employee_Id`, `User_Id`, `Employee`, `Designation`, `Gender`, `Mobile`, `Email`, `Address`) VALUES
 (1, 1, 'Sush', 'Assistant Manager', 'Female', 7984561235, 'ASDFWDF2@kqhfd', 'Honnavar');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `login`
---
-
-CREATE TABLE `login` (
-  `User_Id` int(10) NOT NULL,
-  `Username` varchar(45) NOT NULL,
-  `Password` varchar(45) NOT NULL,
-  `M_Name` varchar(45) NOT NULL,
-  `Email` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`User_Id`, `Username`, `Password`, `M_Name`, `Email`) VALUES
-(1, 'satya', 'satya', 'Satyam', 'satyamdodmani@gmail.com'),
-(2, 'admin', 'admin', 'Satyam', 'satya@g.com');
 
 -- --------------------------------------------------------
 
@@ -176,7 +155,29 @@ CREATE TABLE `showroom` (
 --
 
 INSERT INTO `showroom` (`Showroom_Id`, `Showroom`, `Manager`, `Gender`, `Mobile`, `Email`, `Address`) VALUES
-(3, 'nike', 'satyam', 'Male', 7894561230, 'satyamdodmani@gmail.com', 'belgaum\nbelgaum');
+(3, 'nike', 'satyam', 'Male', 7894561230, 'satyamdodmani@gmail.com', 'Haliyal');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `User_Id` int(10) NOT NULL,
+  `Username` varchar(45) NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  `M_Name` varchar(45) NOT NULL,
+  `Email` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`User_Id`, `Username`, `Password`, `M_Name`, `Email`) VALUES
+(1, 'satya', 'satya', 'Satyam', 'satyamdodmani@gmail.com'),
+(2, 'admin', 'admin', 'Satyam', 'satya@g.com');
 
 --
 -- Indexes for dumped tables
@@ -204,12 +205,6 @@ ALTER TABLE `employee`
   ADD KEY `User_Id` (`User_Id`);
 
 --
--- Indexes for table `login`
---
-ALTER TABLE `login`
-  ADD PRIMARY KEY (`User_Id`);
-
---
 -- Indexes for table `mallemployee`
 --
 ALTER TABLE `mallemployee`
@@ -229,6 +224,12 @@ ALTER TABLE `showroom`
   ADD PRIMARY KEY (`Showroom_Id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`User_Id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -236,7 +237,7 @@ ALTER TABLE `showroom`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `Cat_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Cat_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer`
@@ -249,12 +250,6 @@ ALTER TABLE `customer`
 --
 ALTER TABLE `employee`
   MODIFY `Employee_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `login`
---
-ALTER TABLE `login`
-  MODIFY `User_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mallemployee`
@@ -275,6 +270,12 @@ ALTER TABLE `showroom`
   MODIFY `Showroom_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `User_Id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -282,25 +283,25 @@ ALTER TABLE `showroom`
 -- Constraints for table `category`
 --
 ALTER TABLE `category`
-  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `login` (`User_Id`);
+  ADD CONSTRAINT `category_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `user` (`User_Id`);
 
 --
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `login` (`User_Id`);
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `user` (`User_Id`);
 
 --
 -- Constraints for table `employee`
 --
 ALTER TABLE `employee`
-  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `login` (`User_Id`);
+  ADD CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `user` (`User_Id`);
 
 --
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `login` (`User_Id`);
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`User_Id`) REFERENCES `user` (`User_Id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

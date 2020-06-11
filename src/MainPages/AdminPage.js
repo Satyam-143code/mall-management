@@ -1,22 +1,24 @@
-import React,{Component} from 'react';
+import React,{Component, useState} from 'react';
 import './Common.css';
-import {NavLink, useHistory} from 'react-router-dom';
+import {NavLink, useHistory,withRouter} from 'react-router-dom';
 import Alogo from '../Images/user1.png';
+import { connect } from 'react-redux';
 
-
-function AdminPage() {
+function AdminPage({Name}) {
     let history=useHistory();
     function Logout(e){
         e.preventDefault();
         history.push('/');
 
     }
+
+    
     
         return(
             <div className='main'>
                 <div className='nav'>
                     <h2>Manage Mart</h2>
-                    <h2>Mr./Ms. Admin</h2>
+                    <h2>{Name}</h2>
                     {/* <img src={Alogo} alt="User"></img> */}
                 </div>
                 <div className='menu'>
@@ -29,4 +31,12 @@ function AdminPage() {
         );
     
 }
-export default AdminPage;
+
+const mapStateToProps = (state) => {
+    return{
+    Name: state.storeValue
+    }
+  }
+
+
+export default  connect(mapStateToProps)(withRouter(AdminPage));

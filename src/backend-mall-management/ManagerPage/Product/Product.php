@@ -6,7 +6,7 @@
     $request=json_decode($postdata);
 
     $Product=$request->Product;
-    $Category=$request->Category;
+    $Category=$request->Category1;
     $Description=$request->Description;
     $Price=$request->Price;
     $Description=$request->Description;

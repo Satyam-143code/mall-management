@@ -108,11 +108,11 @@ class Users extends Component {
          Resp=response.data;
       for(let i=0;i<Resp.length;i+=1){
         myArray.push(<tr key={i} onClick={()=> this.setInputBox(Resp[i]) }>
+          <td>{Resp[i].User_Id}</td>
           <td>{Resp[i].Name}</td>
           <td >{Resp[i].Username}</td>
           <td>{Resp[i].Password}</td>
           <td>{Resp[i].Email}</td>
-          <td style={{visibility:'hidden'}}>{Resp[i].User_Id}</td>
         </tr>)
       
       }
@@ -189,11 +189,11 @@ class Users extends Component {
               <table id="customers">
                   <thead>
                   <tr>
+                      <th>User_Id</th>
                       <th>Name</th>
                       <th>Username</th>
                       <th>Password</th>
                       <th>Email</th>
-                      <th style={{visibility:'hidden'}}>User_Id</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -99,9 +99,9 @@ class Category extends Component {
          Resp=response.data;
       for(let i=0;i<Resp.length;i+=1){
         myArray.push(<tr key={i} onClick={()=> this.setInputBox(Resp[i]) }>
+          <td >{Resp[i].Cat_Id}</td>
           <td>{Resp[i].Category}</td>
           <td >{Resp[i].Description}</td>
-          <td >{Resp[i].Cat_Id}</td>
         </tr>)
       
       }
@@ -162,9 +162,9 @@ class Category extends Component {
               <table id="customers">
                   <thead>
                   <tr>
+                      <th >Cat_Id</th>
                       <th>Category</th>
                       <th>Description</th>
-                      <th >Cat_Id</th>
                     </tr>
                   </thead>
                   <tbody>

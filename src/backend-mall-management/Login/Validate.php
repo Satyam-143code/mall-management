@@ -10,7 +10,7 @@
     $Password=$request->Password;
 
 
-    $sql="SELECT * FROM Login WHERE Username = '{$Username}' AND Password='{$Password}' Limit 1" ;
+    $sql="SELECT * FROM User WHERE Username = '{$Username}' AND Password='{$Password}' Limit 1" ;
 
     if($result=mysqli_query($con,$sql))
     {

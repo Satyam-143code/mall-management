@@ -119,13 +119,13 @@ let myArray=[];
      Resp=response.data;
   for(let i=0;i<Resp.length;i+=1){
     myArray.push(<tr key={i} onClick={()=> this.setInputBox(Resp[i]) }>
-      <td >{Resp[i].Employee}</td>
-      <td >{Resp[i].Designation}</td>
+      <td>{Resp[i].Employee_Id}</td>
+      <td>{Resp[i].Employee}</td>
+      <td>{Resp[i].Designation}</td>
       <td>{Resp[i].Gender}</td>
       <td>{Resp[i].Mobile}</td>
       <td>{Resp[i].Email}</td>
       <td>{Resp[i].Address}</td>
-      <td style={{visibility:'hidden'}}>{Resp[i].Employee_Id}</td>
     </tr>)
   
   }
@@ -220,13 +220,13 @@ let myArray=[];
               <div className="subcontainer2">
                 <table id="customers">
                 <thead>
+                    <th>Employer_Id</th>
                     <th>Name</th>
                     <th>Designation</th>
                     <th>Gender</th>
                     <th>Mobile Number</th>
                     <th>Shop Email</th>
                     <th>Address</th>
-                    <th style={{visibility:'hidden'}}>Employer_Id</th>
                   </thead>
                   <tbody>
                   {this.state.MallEmployees}

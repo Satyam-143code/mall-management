@@ -8,7 +8,7 @@ import Alogo from '../Images/user1.png';
 class Manager extends Component{
 
      Logout=(e)=>{
-         e.preventDefault();
+        //  e.preventDefault();
         this.props.history.push('/');
         
     }

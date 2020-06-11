@@ -16,7 +16,7 @@
     // print_r($Password);
     // print_r($Email);
 
-    $sql= "UPDATE Login
+    $sql= "UPDATE User
     SET M_Name='{$Name}',Username='{$Username}', Password='{$Password}', Email='{$Email}'
     WHERE User_Id='{$User_Id}'
     LIMIT 1";

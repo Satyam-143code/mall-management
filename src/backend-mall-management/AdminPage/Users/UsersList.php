@@ -2,7 +2,7 @@
   require 'Connection.php';
   error_reporting(E_ERROR);
   $Users=[];
-  $sql="SELECT * FROM Login";
+  $sql="SELECT * FROM User";
   if($result=mysqli_query($con,$sql))
   {
     $cr=0;

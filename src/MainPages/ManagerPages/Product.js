@@ -13,7 +13,7 @@ class Product extends Component {
         Product:null,
         Description:null,
         Price:null,
-        Category:null,
+        Category1:null,
         Products:[],
         Categorys:[],
         User_Id:this.props.User_Id,
@@ -36,14 +36,14 @@ class Product extends Component {
             Product:'',
             Description:'',
             Price:'',
-            Category:''
+            Category1:''
         })
 
         
     }
 
     setInputBox(i){
-     var Category=document.getElementById('Category');
+     var Category=document.getElementById('Category1');
      var Product=document.getElementById('Product');
      var Description=document.getElementById('Description');
      var Price=document.getElementById('Price');
@@ -74,7 +74,7 @@ class Product extends Component {
     }
 
     onUpdate=(e)=>{
-        var Category=document.getElementById('Category');
+        var Category=document.getElementById('Category1');
         var Product=document.getElementById('Product');
         var Description=document.getElementById('Description');
         var Price=document.getElementById('Price');
@@ -99,19 +99,21 @@ class Product extends Component {
 
       this.setState({isopened:true});
       let myArray2=[];
-      axios.get('http://localhost/backend-mall-management/ManagerPage/Category/CatogoryList.php')
+      axios.get('http://localhost/backend-mall-management/ManagerPage/Category/CategoryList.php?User_Id='+this.state.User_Id)
       .then(response=>{
          Cat_Resp=response.data;
          console.log(Cat_Resp);
       for(let i=0;i<Cat_Resp.length;i+=1){
-        myArray2.push(<datalist id='Category'>
-          <option>{Cat_Resp[i].Category}</option>
-        </datalist>)
+        myArray2.push(<option key={i}>{Cat_Resp[i].Category}</option>)
       
       }
 
       this.setState({Categorys:myArray2});
+      console.log(this.state.Categorys);
 
+      })
+      .catch(function(error){
+        console.log(error);
       })
       
     }
@@ -123,14 +125,13 @@ class Product extends Component {
       axios.get('http://localhost/backend-mall-management/ManagerPage/Product/ProductList.php?User_Id='+this.state.User_Id)
       .then(response=>{
          Resp=response.data;
-         console.log(Resp);
       for(let i=0;i<Resp.length;i+=1){
         myArray.push(<tr key={i} onClick={()=> this.setInputBox(Resp[i]) }>
+          <td>{Resp[i].Product_Id}</td>
           <td>{Resp[i].Category}</td>
           <td >{Resp[i].Product}</td>
           <td>{Resp[i].Price}</td>
           <td>{Resp[i].Description}</td>
-          <td style={{visibility:'hidden'}}>{Resp[i].Product_Id}</td>
         </tr>)
       
       }
@@ -161,8 +162,11 @@ class Product extends Component {
                 <label htmlFor="Category">Category:</label>
               </div>
               <div className="col-75">
-                <input list='Category' type="text" id="Category" name="Category" placeholder="Select the Category" onChange={this.onAddHandle} value={this.state.Category}/>
-                {this.state.Categorys}
+              <input list='Category' type="text" id='Category1'  placeholder="Category" onChange={this.onAddHandle} value={this.state.Category1}/>
+                <datalist id='Category'>
+                  {this.state.Categorys}
+                </datalist>
+                
               </div>
             </div>
             <div className="row">
@@ -215,11 +219,11 @@ class Product extends Component {
               <table id="customers">
                   <thead>
                   <tr>
+                      <th>Product_Id</th>
                       <th>Category</th>
                       <th>Product</th>
                       <th>Price</th>
                       <th>Description</th>
-                      <th style={{visibility:'hidden'}}>Product_Id</th>
                     </tr>
                   </thead>
                   <tbody>

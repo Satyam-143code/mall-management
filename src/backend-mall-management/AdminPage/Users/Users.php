@@ -10,7 +10,7 @@
     $Password=$request->password;
     $Email=$request->Email;
 
-    $sql= "INSERT INTO Login
+    $sql= "INSERT INTO User
     VALUES(NULL, '{$Username}', '{$Password}','{$Name}', '{$Email}')";
 
     if(mysqli_query($con,$sql))
